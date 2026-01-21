@@ -1,20 +1,88 @@
-# Multi-Agent LangGraph Movie Evaluator
+# LangGraph Movie Synopsis Evaluator
 
-This project implements a LangGraph-based multi-agent workflow to evaluate a movie synopsis.
+This project implements a LangGraph-based multi-agent workflow to evaluate a movie synopsis using a Large Language Model (Google Gemini).
 
-## Workflow
-1. The synopsis is classified into a primary genre.
-2. Execution is conditionally routed to a genre-specific evaluator.
-3. The evaluator scores the synopsis on story and character quality.
-4. An aggregator computes the final score and provides reasoning.
+The system classifies the genre of a movie synopsis and conditionally routes the execution to a genre-specific evaluator. Each evaluator scores the synopsis based on story quality and character depth, and a final aggregator computes the overall score with reasoning.
+
+---
+
+## Architecture Overview
+
+1. Genre Classification  
+2. Conditional Routing  
+3. Genre-Specific Evaluation  
+4. Score Aggregation  
+5. Final Output Generation  
+
+The workflow is modeled as a stateful graph using LangGraph.
+
+---
 
 ## Technologies Used
+
+- Python
 - LangGraph
 - Google Gemini (LLM)
+- python-dotenv
 
-## How to Run
+---
 
-```bash
+## Project Structure
+
+langgraph-movie-evaluator/
+├── main.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+├── .env
+└── venv/
+
+
+---
+
+## Setup Instructions
+
+1. Create and activate a virtual environment:
+python -m venv venv
+venv\Scripts\Activate.ps1
+
+
+2. Install dependencies:
 pip install -r requirements.txt
-export GOOGLE_API_KEY=your_api_key_here
+
+
+3. Create a `.env` file and add your API key:
+GOOGLE_API_KEY=your_api_key_here
+
+
+4. Run the application:
 python main.py
+
+
+---
+
+## Output
+
+The program prints:
+- Detected genre
+- Story score
+- Character score
+- Final aggregated score
+- Reasoning behind the evaluation
+
+---
+
+## Key Concepts Demonstrated
+
+- Stateful graph-based orchestration
+- Conditional routing using LangGraph
+- Multi-agent evaluation pattern
+- Deterministic aggregation logic
+- Clean separation of responsibilities
+
+---
+
+## Notes
+
+- The `.env` file and virtual environment are excluded from version control.
+- The implementation strictly follows the provided task document.

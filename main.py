@@ -52,12 +52,23 @@ def aggregator(state: GraphState) -> GraphState:
         (state["story_score"] + state["character_score"]) / 2, 1
     )
 
-    reasoning = (
-        f"The synopsis aligns well with the {state['genre']} genre. "
-        "The narrative and character motivations are clearly established."
-    )
+    prompt = f"""
+You are a professional movie critic.
 
-    return {**state, "final_score": final_score, "reasoning": reasoning}
+Movie genre: {state['genre']}
+Story score: {state['story_score']}
+Character score: {state['character_score']}
+
+Write a short, professional reasoning explaining the final evaluation.
+"""
+    response = model.generate_content(prompt)
+    reasoning = response.text.strip()
+
+    return {
+        **state,
+        "final_score": final_score,
+        "reasoning": reasoning
+    }
 
 
 def route_by_genre(state: GraphState) -> Literal[

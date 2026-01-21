@@ -85,4 +85,8 @@ The program prints:
 ## Notes
 
 - The `.env` file and virtual environment are excluded from version control.
+<<<<<<< HEAD
 - The implementation strictly follows the provided task document.
+=======
+- The implementation strictly follows the provided task document.
+>>>>>>> 43449b2 (Finalize LangGraph movie evaluator with conditional routing and aggregation)
